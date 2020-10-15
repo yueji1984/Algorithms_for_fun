@@ -8,3 +8,27 @@
 # 2)	Consider the sequence of numbers t^2 - n, (t+1)^2 - n, ..., ((n+1)/2)^2 - n, 
 #     stopping when a square p = (t + k)^2 - n is found.
 # 3)	Let q = t + k, then we have n = (q - p)(q + p) which is a factorization of n.
+
+import math
+
+n = int(input('the odd number you want to test if it is a prime number: '))
+
+t = math.ceil(n ** 0.5)
+start = int(t)
+end = int((n+1)/2)
+prime = True
+
+for i in range(start, end):
+  q = (i ** 2 - n) ** 0.5
+  if q == math.floor(q):
+    q = int(q)
+    p = i
+    prime = False
+    break
+
+if prime:
+  p = i
+  print(n, "is an odd prime number")
+else:
+  print(n, "=", p-q,"*",p+q)
+  print(n, "is not an odd prime number")
